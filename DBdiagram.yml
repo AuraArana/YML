@@ -1,0 +1,59 @@
+User
+-
+UserID PK int
+Email string INDEX
+Username String
+Password String
+
+Profile
+--
+ProfileID PK int FK -< Friends.FriendID
+Email int FK >- User.UserID
+First_Name string
+Last_Name string
+Bio String
+Photo String
+City String
+State String
+
+Friends 
+---
+FriendID int 
+Email int
+Follow String
+Message String
+
+Direct_Message 
+----
+DirectMessageID PK int
+Message int FK >- Friends.FriendID
+
+Stories
+-----
+StoryID
+ProfileID PK int FK >- Profile.ProfileID
+Comment String
+Share String
+
+Post
+------
+PostID PK int
+ProfileID PK int FK >- Profile.ProfileID
+Post String
+Caption String
+Comment String
+Like String
+Share String
+
+Post_Comment
+-------
+Post_CommentID 
+PostID PK int FK >- Post.PostID
+Comment string
+Like String
+
+Story_Comment
+-------
+Story_CommentID 
+StoryID PK int FK >- Stories.StoryID
+Comment string
